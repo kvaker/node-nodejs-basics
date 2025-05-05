@@ -3,6 +3,11 @@ import os from 'os';
 export const handleOS = async (args) => {
   const option = args[0];
 
+  if (!option) {
+    console.log('Пожалуйста, укажите флаг. Доступные флаги:\n  --EOL\n  --cpus\n  --homedir\n  --username\n  --architecture');
+    return process.cwd();
+  }
+
   switch (option) {
     case '--EOL':
       console.log(JSON.stringify(os.EOL));
@@ -12,7 +17,7 @@ export const handleOS = async (args) => {
       const cpus = os.cpus();
       console.log(`Количество ядер: ${cpus.length}`);
       cpus.forEach((cpu, index) => {
-        console.log(`Ядро #${index + 1}: ${cpu.model}, ${cpu.speed / 1000} GHz`);
+        console.log(`Ядро #${index + 1}: ${cpu.model}, ${(cpu.speed / 1000).toFixed(2)} GHz`);
       });
       break;
 
@@ -29,7 +34,7 @@ export const handleOS = async (args) => {
       break;
 
     default:
-      console.log('Недопустимый ввод');
+      console.log('Недопустимый флаг. Используйте один из: --EOL, --cpus, --homedir, --username, --architecture');
   }
 
   return process.cwd();
