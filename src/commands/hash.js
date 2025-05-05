@@ -3,6 +3,11 @@ import fs from 'fs';
 import path from 'path';
 
 export const handleHash = async (args, currentDir) => {
+  if (!args[0]) {
+    console.log('Укажите путь к файлу');
+    return currentDir;
+  }
+
   const filePath = path.resolve(currentDir, args[0]);
 
   return new Promise((resolve, reject) => {
