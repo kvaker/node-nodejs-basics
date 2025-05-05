@@ -81,11 +81,11 @@ export const handleFile = async (command, args, cwd) => {
       }
 
       default:
-        console.log('Недопустимый ввод');
+        console.log('Invalid input');
         break;
     }
   } catch (err) {
-    console.log('Операция не выполнена');
+    console.log('Operation failed');
   }
 
   return cwd;

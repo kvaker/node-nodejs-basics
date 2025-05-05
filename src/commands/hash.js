@@ -4,7 +4,7 @@ import path from 'path';
 
 export const handleHash = async (args, currentDir) => {
   if (!args[0]) {
-    console.log('Укажите путь к файлу');
+    console.log('Specify the path to the file');
     return currentDir;
   }
 
@@ -15,7 +15,7 @@ export const handleHash = async (args, currentDir) => {
     const stream = fs.createReadStream(filePath);
 
     stream.on('error', () => {
-      console.log('Операция не выполнена');
+      console.log('Operation failed');
       resolve(currentDir);
     });
 

@@ -4,7 +4,7 @@ import { createBrotliCompress, createBrotliDecompress } from 'zlib';
 
 export const handleCompression = async (command, args, currentDir) => {
   if (!args[0] || !args[1]) {
-    throw new Error('Недопустимый ввод');
+    throw new Error('Invalid input');
   }
 
   const source = path.resolve(currentDir, args[0]);
@@ -15,7 +15,7 @@ export const handleCompression = async (command, args, currentDir) => {
     const output = fs.createWriteStream(destination);
 
     const onError = () => {
-      console.log('Операция не выполнена');
+      console.log('Operation failed');
       resolve(currentDir);
     };
 

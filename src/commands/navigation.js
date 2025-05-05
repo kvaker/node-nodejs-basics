@@ -18,7 +18,7 @@ export const handleNavigation = async (command, args, currentDir) => {
       return cwd;
 
     case 'cd':
-      if (!args[0]) throw new Error('Недопустимый ввод');
+      if (!args[0]) throw new Error('Invalid input');
       const targetPath = path.resolve(cwd, args[0]);
       try {
         const stat = await fs.stat(targetPath);
@@ -28,7 +28,7 @@ export const handleNavigation = async (command, args, currentDir) => {
           throw new Error();
         }
       } catch {
-        throw new Error('Операция не выполнена');
+        throw new Error('Operation failed');
       }
 
     case 'ls':
@@ -45,11 +45,11 @@ export const handleNavigation = async (command, args, currentDir) => {
           Type: f.isDirectory() ? 'directory' : 'file'
         })));
       } catch {
-        throw new Error('Операция не выполнена');
+        throw new Error('Operation failed');
       }
       return cwd;
 
     default:
-      throw new Error('Недопустимый ввод');
+      throw new Error('Invalid input');
   }
 };

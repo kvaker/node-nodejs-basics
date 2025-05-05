@@ -4,11 +4,11 @@ import { homedir } from 'os';
 import { handleCommand } from './commands/index.js';
 
 const usernameArg = process.argv.find(arg => arg.startsWith('--username='));
-const username = usernameArg ? usernameArg.split('=')[1] : 'Аноним';
+const username = usernameArg ? usernameArg.split('=')[1] : 'anonym';
 let currentDir = homedir();
 
-console.log(`Добро пожаловать в файловый менеджер, ${username}!`);
-console.log(`Вы находитесь в ${currentDir}`);
+console.log(`Welcome to the File Manager, ${username}!`);
+console.log(`You are currently in ${currentDir}`);
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -17,7 +17,7 @@ const rl = readline.createInterface({
 });
 
 const exit = () => {
-  console.log(`Спасибо за использование файлового менеджера, ${username}, до свидания!`);
+  console.log(`Thank you for using File Manager, ${username}, goodbye!`);
   process.exit(0);
 };
 
@@ -30,7 +30,7 @@ rl.on('line', async (input) => {
     exit();
   } else {
     currentDir = await handleCommand(command, currentDir);
-    console.log(`Вы находитесь в ${currentDir}`);
+    console.log(`You are currently in ${currentDir}`);
     rl.prompt();
   }
 });

@@ -29,10 +29,10 @@ export const handleCommand = async (commandLine, currentDir) => {
       case 'decompress':
         return await handleCompression(command, args, currentDir);
       default:
-        console.log('Недопустимый ввод');
+        console.log('Invalid input');
     }
   } catch (e) {
-    console.log('Операция не выполнена');
+    console.log('Operation failed');
   }
 
   return currentDir;
